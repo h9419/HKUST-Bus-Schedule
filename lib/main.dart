@@ -169,10 +169,17 @@ class _MyHomePageState extends State<MyHomePage> {
                           defaultVerticalAlignment:
                               TableCellVerticalAlignment.middle,
                           columnWidths: customColumnWidths,
-                          children: (buses[0] as List<dynamic>)
-                              .map((entry) => ETACard(entry["route"],
-                                  entry["eta"], entry["rmk_en"]))
-                              .toList(),
+                          children: (buses[0] as List<dynamic>).map((entry) {
+                            if (entry["service_type"] == 1)
+                              return ETACard(entry["route"], entry["eta"],
+                                  entry["rmk_en"]);
+                            return TableRow(children: [
+                              TableCell(child: Container()),
+                              TableCell(child: Container()),
+                              TableCell(child: Container()),
+                              TableCell(child: Container())
+                            ]);
+                          }).toList(),
                         ),
                       ],
                     );
