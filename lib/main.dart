@@ -69,8 +69,26 @@ class _MyHomePageState extends State<MyHomePage> {
     hkust_north_buses.clear();
     http
         .get(Uri.parse(
-            'https://data.etabus.gov.hk/v1/transport/kmb/stop-eta/B002CEF0DBC568F5'))
+            'https://data.etabus.gov.hk/v1/transport/kmb/stop-eta/B3E60EE895DBBF06'))
         // 'https://data.etabus.gov.hk/v1/transport/kmb/eta/B002CEF0DBC568F5/91M/1'
+        .then((value) => {
+              setState(() {
+                hkust_north_buses += jsonDecode(value.body)["data"].toList();
+                hkust_north_buses.sort(sortingETA);
+              })
+            });
+    http
+        .get(Uri.parse(
+            'https://data.etabus.gov.hk/v1/transport/kmb/stop-eta/3592A0182BF020C7'))
+        .then((value) => {
+              setState(() {
+                hkust_north_buses += jsonDecode(value.body)["data"].toList();
+                hkust_north_buses.sort(sortingETA);
+              })
+            });
+    http
+        .get(Uri.parse(
+            'https://data.etabus.gov.hk/v1/transport/kmb/stop-eta/C1AAFE0EB8BD89C7'))
         .then((value) => {
               setState(() {
                 hkust_north_buses += jsonDecode(value.body)["data"].toList();
@@ -83,7 +101,16 @@ class _MyHomePageState extends State<MyHomePage> {
     hkust_south_buses.clear();
     http
         .get(Uri.parse(
-            'https://data.etabus.gov.hk/v1/transport/kmb/stop-eta/3592A0182BF020C7'))
+            'https://data.etabus.gov.hk/v1/transport/kmb/stop-eta/B002CEF0DBC568F5'))
+        .then((value) => {
+              setState(() {
+                hkust_south_buses += jsonDecode(value.body)["data"].toList();
+                hkust_south_buses.sort(sortingETA);
+              })
+            });
+    http
+        .get(Uri.parse(
+            'https://data.etabus.gov.hk/v1/transport/kmb/stop-eta/E9018F8A7E096544'))
         .then((value) => {
               setState(() {
                 hkust_south_buses += jsonDecode(value.body)["data"].toList();
