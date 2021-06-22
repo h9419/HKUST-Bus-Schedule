@@ -108,10 +108,10 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     const customColumnWidths = {
-      0: FlexColumnWidth(1),
-      1: FlexColumnWidth(3),
-      2: FlexColumnWidth(2),
-      3: FlexColumnWidth(2),
+      0: FlexColumnWidth(3),
+      1: FlexColumnWidth(6),
+      2: FlexColumnWidth(4),
+      3: FlexColumnWidth(4),
     };
     return TimerBuilder.periodic(
       Duration(seconds: 10),
